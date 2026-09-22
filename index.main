@@ -1,0 +1,805 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glow Beauty | Cosmetics Shop</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fff8fb;
+            color: #33242a;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 18px 8%;
+            background: #5c164b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffd6e8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd6e8;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(92,22,75,0.72),
+                    rgba(40,15,32,0.78)
+                ),
+                url("https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 70px;
+            color: #ffd6e8;
+            margin-bottom: 10px;
+        }
+
+        .hero-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffd6e8;
+            color: #5c164b;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            background: white;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            color: #5c164b;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            color: #806b74;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .product-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
+            gap: 28px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(92,22,75,0.12);
+            transition: 0.4s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(92,22,75,0.22);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            color: #5c164b;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: #777;
+            font-size: 14px;
+            min-height: 45px;
+        }
+
+        .price {
+            display: block;
+            color: #d63384;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* ================= CATEGORY ================= */
+
+        .categories {
+            background: #fceaf3;
+        }
+
+        .category-container {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+            padding: 30px 15px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: scale(1.05);
+        }
+
+        .category .icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .category h3 {
+            color: #5c164b;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* ================= OFFER ================= */
+
+        .offer {
+            background: #5c164b;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 25px;
+        }
+
+        .offer h2 {
+            color: #ffd6e8;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .offer p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: #5c164b;
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+        }
+
+        .contact-info h3 {
+            color: #ffd6e8;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin: 18px 0;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #5c164b;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d63384;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #29101f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer span {
+            color: #ffd6e8;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 8px;
+                font-size: 14px;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .hero-content h2 {
+                font-size: 25px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <div class="logo">
+            💄 Glow Beauty
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Glow Beauty</h1>
+
+            <h2>Beauty Begins With You</h2>
+
+            <p>
+                Discover premium cosmetics and beauty essentials
+                designed to make you feel confident, beautiful
+                and unstoppable.
+            </p>
+
+            <a href="#products" class="btn">
+                Explore Products
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="categories" id="categories">
+
+        <div class="section-title">
+
+            <h2>Shop By Category</h2>
+
+            <p>Everything you need for your beauty routine.</p>
+
+        </div>
+
+
+        <div class="category-container">
+
+            <div class="category">
+                <div class="icon">💋</div>
+                <h3>Lip Products</h3>
+            </div>
+
+            <div class="category">
+                <div class="icon">✨</div>
+                <h3>Skincare</h3>
+            </div>
+
+            <div class="category">
+                <div class="icon">👁️</div>
+                <h3>Eye Makeup</h3>
+            </div>
+
+            <div class="category">
+                <div class="icon">🌸</div>
+                <h3>Fragrances</h3>
+            </div>
+
+            <div class="category">
+                <div class="icon">💅</div>
+                <h3>Nail Care</h3>
+            </div>
+
+            <div class="category">
+                <div class="icon">🧴</div>
+                <h3>Body Care</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section id="products">
+
+        <div class="section-title">
+
+            <h2>Our Beauty Collection</h2>
+
+            <p>
+                Explore our most popular cosmetics and skincare products.
+            </p>
+
+        </div>
+
+
+        <div class="product-container">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80"
+                    alt="Lipstick">
+
+                <div class="product-info">
+
+                    <h3>Luxury Lipstick</h3>
+
+                    <p>
+                        Smooth matte lipstick with long-lasting
+                        rich colour.
+                    </p>
+
+                    <span class="price">₹499</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
+                    alt="Skincare">
+
+                <div class="product-info">
+
+                    <h3>Skin Care Kit</h3>
+
+                    <p>
+                        Complete daily skincare collection
+                        for healthy glowing skin.
+                    </p>
+
+                    <span class="price">₹899</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80"
+                    alt="Foundation">
+
+                <div class="product-info">
+
+                    <h3>Liquid Foundation</h3>
+
+                    <p>
+                        Lightweight foundation with smooth
+                        natural coverage.
+                    </p>
+
+                    <span class="price">₹699</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80"
+                    alt="Mascara">
+
+                <div class="product-info">
+
+                    <h3>Volume Mascara</h3>
+
+                    <p>
+                        Create fuller, longer and beautiful
+                        looking eyelashes.
+                    </p>
+
+                    <span class="price">₹399</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 5 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=80"
+                    alt="Perfume">
+
+                <div class="product-info">
+
+                    <h3>Luxury Perfume</h3>
+
+                    <p>
+                        Elegant floral fragrance for
+                        a long-lasting impression.
+                    </p>
+
+                    <span class="price">₹1,299</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 6 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80"
+                    alt="Serum">
+
+                <div class="product-info">
+
+                    <h3>Vitamin C Serum</h3>
+
+                    <p>
+                        Brightening face serum for a
+                        fresh and radiant appearance.
+                    </p>
+
+                    <span class="price">₹749</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 7 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80"
+                    alt="Moisturizer">
+
+                <div class="product-info">
+
+                    <h3>Face Moisturizer</h3>
+
+                    <p>
+                        Hydrating moisturizer for soft
+                        and smooth looking skin.
+                    </p>
+
+                    <span class="price">₹599</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 8 -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=600&q=80"
+                    alt="Eyeshadow">
+
+                <div class="product-info">
+
+                    <h3>Eyeshadow Palette</h3>
+
+                    <p>
+                        Beautiful collection of shades
+                        for everyday and party looks.
+                    </p>
+
+                    <span class="price">₹799</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <div class="section-title">
+
+            <h2>About Glow Beauty</h2>
+
+        </div>
+
+        <div class="about-content">
+
+            <p>
+                Glow Beauty is a modern cosmetics store created for
+                people who love skincare, makeup and fragrances.
+                We bring together beauty essentials with stylish,
+                affordable and easy-to-use products.
+            </p>
+
+            <br>
+
+            <p>
+                Our collection includes makeup, skincare, fragrances,
+                nail care and body care products suitable for
+                everyday beauty routines and special occasions.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= OFFER ================= -->
+
+    <section>
+
+        <div class="offer">
+
+            <h2>✨ Beauty Special Offer ✨</h2>
+
+            <p>
+                Get <strong>20% OFF</strong> on orders above ₹1500!
+            </p>
+
+            <a href="#contact" class="btn">
+                Shop Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact">
+
+        <div class="section-title">
+
+            <h2>Contact Us</h2>
+
+            <p>
+                Have a question? We would love to hear from you.
+            </p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+
+            <div class="contact-info">
+
+                <h3>Glow Beauty</h3>
+
+                <p>📍 25 Beauty Street, Chennai</p>
+
+                <p>📞 +91 98765 43210</p>
+
+                <p>📧 glowbeauty@gmail.com</p>
+
+                <p>🕐 Open: 10:00 AM - 9:00 PM</p>
+
+                <p>📱 Instagram: @glowbeauty</p>
+
+            </div>
+
+
+            <form>
+
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    required>
+
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    required>
+
+                <input
+                    type="tel"
+                    placeholder="Phone Number">
+
+                <textarea
+                    placeholder="Your Message / Product Enquiry">
+                </textarea>
+
+                <button type="submit">
+                    Send Enquiry
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>Glow Beauty</span>
+            | Beauty • Confidence • You 💖
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
